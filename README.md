@@ -17,5 +17,4 @@ this bot is already running at [t.me/Pasterfn_bot](https://t.me/pasterfn_bot) bu
 * Python-Telegram-Bot
 
 #### To do:
-- [ ] Add Auto language detection
-- [ ] Handle files
+- [x] Handle files
