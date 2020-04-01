@@ -33,3 +33,14 @@ SQLite3 Preparation
 2. make a cursor
 3. make table *
 """
+import os
+def reset_temp_files():
+    try:
+        os.remove("temp_file_text.txt")
+    except:
+        pass
+    
+    try:
+        os.remove("temp_file.py")
+    except:
+        pass
