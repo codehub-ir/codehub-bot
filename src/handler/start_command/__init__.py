@@ -82,6 +82,7 @@ def confirm_state_handler(update: Update, context: CallbackContext, model):
             body = context.user_data["source_code"]
         )
         paste = model.Paste.create(
+            id = res["id"],
             title = res["title"],
             description = res["description"],
             lang = res["lang"],
