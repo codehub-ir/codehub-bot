@@ -1,2 +1,5 @@
-users.db
-__pycache__
+database.db
+__pycache__/
+*.db
+.env
+.vscode/
