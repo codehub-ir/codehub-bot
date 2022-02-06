@@ -133,6 +133,11 @@ def skip_get_title_state_handler(update: Update, context: CallbackContext, model
 
 def get_title_state_handler(update: Update, context: CallbackContext, model):
     lang = context.user_data["lang"]
+    if len(update.message.text) > 50:
+        update.message.reply_text(
+            model.lang.data[lang]["PASTE_GET_TITLE_BAD_LANGHT"]
+        )
+        return GET_TITLE
     context.user_data["title"] = update.message.text
     update.message.reply_text(
         model.lang.data[lang]["PASTE_GET_TITLE_CONFIRM"]
