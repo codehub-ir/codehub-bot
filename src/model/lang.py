@@ -19,7 +19,8 @@ data = {
         "START_TEXT": "سلام! به دنیای کدهاب خوش اومدی!\nاگه میخوای پیستی انجام بدی، هرجا که لازم داشتی، /paste رو واسم بفرست. یا میتونی کامندای دیگرو انتخاب کنی.\nهمچنین، میتونی با نوشتن @{username} در هرجایی که می\u200cخوای، لیست پیست\u200cهات رو ببینی و با سرچ کردن، به اشتراکشون بذاری.",
         "PASTE_CONFIRM_SHARE_CODE_BUTTON": "بفرستش یجای دیگه واسم",
         "LANG_TEXT": "خب! یکی از این زبونا رو انتخاب کن:",
-        "LANG_QUERY_OK": "درست شد!"
+        "LANG_QUERY_OK": "درست شد!",
+        "PASTE_GET_TITLE_BAD_LANGHT": "طول عنوان نمی‌تواند بیشتر از ۵۰ حرف باشد! دوباره بفرست:"
     },
     "en": {
         "PASTE_PRIVATE_ENTRY": "please send your code as a file or a message:",
@@ -41,7 +42,8 @@ data = {
         "START_TEXT": "Hello! Welcome to the CodeHub world! you can send me /paste command to add your paste here. also you can write @{username} everywhere you want, then search and share your paste.",
         "PASTE_CONFIRM_SHARE_CODE_BUTTON": "share it!",
         "LANG_TEXT": "OK! choose a language:",
-        "LANG_QUERY_OK": "Done!"
+        "LANG_QUERY_OK": "Done!",
+        "PASTE_GET_TITLE_BAD_LANGHT": "title can't be more than 50 characters. send it again:"
     },
 }
 
