@@ -6,11 +6,12 @@ from telegram import (
 )
 from telegram.ext import (
     CommandHandler,
-    MessageHandler,
-    Filters,
-    ConversationHandler,
     CallbackContext,
-    CallbackQueryHandler
+)
+from telegram.error import (
+    RetryAfter,
+    TimedOut,
+    BadRequest,
 )
 from ..functions import pass_model_to
 import html, datetime, time
@@ -167,12 +168,33 @@ frames = [
 def auto_next_frame(message: Message):
     finish = datetime.datetime.now()+datetime.timedelta(days=1)
     while finish > datetime.datetime.now():
-        for frame in frames:
-            message.edit_text(
-                text = f"<code>{html.escape(frame)}</code>",
-                parse_mode = "HTML",
-            )
-            time.sleep(1)
+        try:
+            for frame in frames[:4]:
+                try:
+                    message.edit_text(
+                        text = f"<code>{html.escape(frame)}</code>",
+                        parse_mode = "HTML",
+                    )
+                except BadRequest:
+                    pass
+                time.sleep(1)
+            time.sleep(3)
+            for frame in frames[4:]:
+                try:
+                    message.edit_text(
+                        text = f"<code>{html.escape(frame)}</code>",
+                        parse_mode = "HTML",
+                    )
+                except:
+                    pass
+                time.sleep(1)
+            time.sleep(7)
+        except TimedOut:
+            time.sleep(2)
+            continue
+        except RetryAfter as err:
+            print("/norooz: retry after", err.retry_after)
+            time.sleep(err.retry_after)
 
 def norooz_command_handler(update: Update, context: CallbackContext, model):
     ADMIN = int(os.getenv("ADMIN", "0"))
