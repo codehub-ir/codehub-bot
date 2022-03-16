@@ -228,15 +228,15 @@ def auto_next_frame(message: Message):
             time.sleep(err.retry_after)
 
 def norooz_command_handler(update: Update, context: CallbackContext, model):
+    update.message.delete()
     ADMIN = int(os.getenv("ADMIN", "0"))
-    if 0!=ADMIN!=update.message.from_user.id:
-        return
-    if context.bot.get_chat_member(
+    if 0==ADMIN and context.bot.get_chat_member(
         chat_id=update.message.chat.id,
         user_id=update.message.from_user.id,
     ).status not in (ChatMember.ADMINISTRATOR, ChatMember.CREATOR):
         return
-    update.message.delete()
+    elif ADMIN!=update.message.from_user.id:
+        return
     message = context.bot.send_message(
         chat_id = update.message.chat.id,
         text = f"<code>{html.escape(frames[0])}</code>",
